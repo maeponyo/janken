@@ -11,6 +11,6 @@ function action(oppornent){
     matches = 1;
   }
   matches = matches + 1;
-  ans = matches % 3;
+  ans = GU;
   return ans;
 }
