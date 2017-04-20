@@ -52,8 +52,13 @@ class App {
     const player = new Player();
     const oppornent = new (fighter.klass)();
     const fixtures = [];
+    
+    global.fixtures = () => fixtures;
+    global.cards = () => fixtures.map(i => i.oppornentCard.type);
+    global.results = () => fixtures.map(i => i.result);
+
     for(let i = 0; i < this.matches; i++){
-      const fixture = new Fixture(fighter, player.action(), oppornent.action());
+      const fixture = new Fixture(fighter, player.action(fighter), oppornent.action());
       fixtures.push(fixture);
     }
     const stats = new Stats(fixtures);
