@@ -4,13 +4,13 @@ const PA = 2;
 let matches;
 var ans;
 
-matches = 1;
+matches = 0;
 
 function action(oppornent){
-  if(matches > 50){
-    matches = 1;
+  if(matches > 100){
+    matches = 0;
   }
-  matches = matches + 1;
-  ans = GU;
+  matches = matches + 2;
+  ans = matches % 4;
   return ans;
 }
