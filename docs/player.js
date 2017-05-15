@@ -65,3 +65,17 @@ function action(oppornent){
 // function action(oppornent) {
 //   return oppornent;
 // }
+
+function abs(value){
+  let result = value;
+  if(result < 0){
+    result = result * -1;
+  }
+  return result;
+}
+
+function distance(a,b){
+  let a_ans = abs(a);
+  let b_ans = abs(b);
+  return a_ans + b_ans;
+}
