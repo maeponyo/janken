@@ -5,63 +5,94 @@ const PA = 2;
 let matches;
 var ans;
 
+matches = 0;
 
 // チョキ
 
-// function action(oppornent){
-//   if(matches > 50){
-//     matches = 1;
-//   }
-//   matches = matches + 1;
-//   return GU;
-// }
+function actionAgainstChoki(){
+  return GU;
+}
 
 
 // 裏か表か
-// matches = 0;
-// function action(oppornent){
-//   if(matches > 99){
-//     matches = 0;
-//   }
-//   matches = matches + 2;
-//   ans = matches % 4;
-//   console.log(matches);
-//   return ans;
-// }
+
+function actionAgainstOmoteUra(){
+  if(matches % 2 == 0){
+    return GU;
+  }
+  return PA;
+}
+
+// 帰って来たうらか表か
+
+function actionAgainstOmoteUra2(){
+  if(matches % 3 == 0){
+    return CHOKI;
+  }
+  return GU;
+}
 
 // 順番に出すマン
 
-matches = 1;
-function action(oppornent){
-  if(matches > 50){
-    matches = 1;
+function actionAgainstJunban(){
+  if(matches % 3 == 1){
+    return PA;
   }
-  matches = matches + 1;
-  ans = matches % 3;
-  return ans;
+  else if (matches % 3 == 2) {
+    return GU;
+  }
+  else {
+    return CHOKI;
+  }
 }
 
 // フィズバズ
 
-// matches = 0;
-// function action(oppornent){
-//   if(matches >= 50){
-//     matches = 0;
-//   }
-//   matches = matches + 1;
-//   if(matches % 15 == 0){
-//     return CHOKI;
-//   }
-//   else if (matches % 15 == 5 || matches %  15 == 9 || matches % 15 == 12) {
-//     return GU;
-//   }
-//
-//   return PA;
-// }
+
+function actionAgainstFizzBuzz(oppornent){
+  if(matches % 15 == 0){
+    return CHOKI;
+  }
+  else if (matches % 15 == 5 || matches %  15 == 9 || matches % 15 == 12) {
+    return GU;
+  }
+
+  return PA;
+}
 
 // ランダム
 
-// matches = 0;
-// function action(oppornent) {
-//   return oppornent;
-// }
+function actionAgainstRandom() {
+  return GU;
+}
+
+
+
+function action(oppornent){
+  if(matches >= 50){
+    matches = 0;
+  }
+  matches = matches + 1
+
+  let ans;
+  
+  if(oppornent == "fighter::choki-lover"){
+    ans = actionAgainstChoki();
+  }
+  else if(oppornent === "fighter::odd-even"){
+    ans = actionAgainstOmoteUra();
+  }
+  else if(oppornent == "fighter::on-third"){
+    ans = actionAgainstOmoteUra2();
+  }
+  else if(oppornent == "fighter::rotation"){
+    ans = actionAgainstJunban();
+  }
+  else if (oppornent == "fighter::fizzbuzz") {
+    ans = actionAgainstFizzBuzz();
+  }
+  else{
+    ans = actionAgainstRandom();
+  }
+  return ans;
+}
