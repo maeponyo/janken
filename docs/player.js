@@ -75,7 +75,7 @@ function action(oppornent){
   matches = matches + 1
 
   let ans;
-  
+
   if(oppornent == "fighter::choki-lover"){
     ans = actionAgainstChoki();
   }
