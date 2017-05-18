@@ -4,6 +4,9 @@ const CHOKI = 1;
 const PA = 2;
 let matches;
 var ans;
+var list;
+var index;
+var lastCard;
 
 matches = 0;
 
@@ -46,6 +49,21 @@ function actionAgainstJunban(){
   }
 }
 
+function actionAgainstRotation2(matches){
+  if(matches == 1 || matches == 2){
+    return GU;
+  }
+
+  let index2 = Math.max(0, list.length -2 );
+  let lastCard2 = list[index2];
+
+  if(lastCard2 == lastCard + 1 || lastCard2 == lastCard - 2){
+    return lastCard2;
+  }
+
+  return lastCard;
+}
+
 // フィズバズ
 
 
@@ -69,13 +87,15 @@ function actionAgainstRandom() {
 
 
 function action(oppornent){
-  if(matches >= 50){
-    matches = 0;
-  }
-  matches = matches + 1
+
+  list = cards();
+  index = Math.max(0, list.length -1 );
+  lastCard = list[index];
+
+  matches = list.length + 1;
 
   let ans;
-  
+
   if(oppornent == "fighter::choki-lover"){
     ans = actionAgainstChoki();
   }
@@ -87,6 +107,9 @@ function action(oppornent){
   }
   else if(oppornent == "fighter::rotation"){
     ans = actionAgainstJunban();
+  }
+  else if(oppornent == "fighter::returned-rotation"){
+    ans = actionAgainstRotation2(matches);
   }
   else if (oppornent == "fighter::fizzbuzz") {
     ans = actionAgainstFizzBuzz();
