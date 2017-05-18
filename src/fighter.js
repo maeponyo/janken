@@ -2,29 +2,30 @@ import ChokiLover from "./fighter/choki-lover";
 import OddEven from "./fighter/odd-even";
 import OneThrid from "./fighter/one-third"
 import Rotation from "./fighter/rotation";
+import History from "./fighter/history";
 import FizzBuzz from "./fighter/fizzbuzz";
 import Random from "./fighter/random";
 
-class Introduction{
-  constructor(id, fighter, name, description){
+class Introduction {
+  constructor(id, fighter, name, description) {
     this._id = id;
     this._fighter = fighter;
     this._name = name;
     this._description = description;
   }
-  get name(){
+  get name() {
     return this._name;
   }
-  get description(){
+  get description() {
     return this._description;
   }
-  get fighter(){
+  get fighter() {
     return this._fighter;
   }
-  get klass(){
+  get klass() {
     return this.fighter;
   }
-  get id(){
+  get id() {
     return `fighter::${this._id}`;
   }
 }
@@ -34,9 +35,10 @@ const fighters = [
   new Introduction("odd-even", OddEven, "表か裏かマン", "2種類のカードを交互に出していくプレーヤー。"),
   new Introduction("on-third", OneThrid, "帰ってきた表か裏かマン", "2種類のカードを使い分けていくプレーヤー。"),
   new Introduction("rotation", Rotation, "順番に出していくマン", "全部の種類のカードを、決まった順番で出していくプレーヤー。"),
+  new Introduction("returned-rotation", History, "帰ってきた順番に出していくマン", "決まった順にカードを切るが、その順序は毎回変わるプレーヤー"),
   new Introduction("fizzbuzz", FizzBuzz, "ふぃずばずマン", "「ふぃずばず」のリズムで手を決めていくプレーヤー。"),
   new Introduction("random", Random, "さいころ大好きマン", "全てをさいころの目で決めていくプレーヤー")
 ];
 
-export {fighters}
-export {fighters as default}
+export { fighters }
+export { fighters as default }
