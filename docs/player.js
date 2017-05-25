@@ -1,4 +1,3 @@
-
 const GU = 0;
 const CHOKI = 1;
 const PA = 2;
@@ -11,14 +10,11 @@ var lastCard;
 matches = 0;
 
 // チョキ
-
 function actionAgainstChoki(){
   return GU;
 }
 
-
 // 裏か表か
-
 function actionAgainstOmoteUra(){
   if(matches % 2 == 0){
     return GU;
@@ -27,7 +23,6 @@ function actionAgainstOmoteUra(){
 }
 
 // 帰って来たうらか表か
-
 function actionAgainstOmoteUra2(){
   if(matches % 3 == 0){
     return CHOKI;
@@ -36,7 +31,6 @@ function actionAgainstOmoteUra2(){
 }
 
 // 順番に出すマン
-
 function actionAgainstJunban(){
   if(matches % 3 == 1){
     return PA;
@@ -49,6 +43,7 @@ function actionAgainstJunban(){
   }
 }
 
+//帰って来た裏か表か
 function actionAgainstRotation2(matches){
   if(matches == 1 || matches == 2){
     return GU;
@@ -65,8 +60,6 @@ function actionAgainstRotation2(matches){
 }
 
 // フィズバズ
-
-
 function actionAgainstFizzBuzz(oppornent){
   if(matches % 15 == 0){
     return CHOKI;
@@ -74,16 +67,13 @@ function actionAgainstFizzBuzz(oppornent){
   else if (matches % 15 == 5 || matches %  15 == 9 || matches % 15 == 12) {
     return GU;
   }
-
   return PA;
 }
 
 // ランダム
-
 function actionAgainstRandom() {
   return GU;
 }
-
 
 
 function action(oppornent){
@@ -93,8 +83,6 @@ function action(oppornent){
   lastCard = list[index];
 
   matches = list.length + 1;
-
-  let ans;
 
   if(oppornent == "fighter::choki-lover"){
     ans = actionAgainstChoki();
