@@ -77,7 +77,7 @@ function actionAgainstRandom(matches) {
 function action(oppornent){
   var list = cards();
   var index = Math.max(0, list.length -1 );
-  var index2 = Math.max(0, list.length -2 );
+  var index2 = index - 1;
   var lastCard = list[index];
   var lastCard2 = list[index2];
   let matches = list.length + 1;
